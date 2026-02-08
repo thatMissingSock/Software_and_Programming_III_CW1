@@ -23,8 +23,10 @@ public interface ShippingStrategy {
      * MLO8: Default method for adding a flat-rate processing fee.
      * This demonstrates how to evolve interfaces without breaking implementations.
      */
+
+    // unit test 2 says fee: 26.25 + 5, the .readme says to use addProcessingFee which is the BaseRate + another fee on
+    // top (nothing stating it is dynamic). I'm using that to figure out it's a static 5 units (?)
     default double addProcessingFee(double baseCost) {
-        // the tests indicate what this method needs to return
-        return 0.0;
+        return baseCost + 5.00;
     }
 }

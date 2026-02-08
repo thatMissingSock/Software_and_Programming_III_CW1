@@ -13,7 +13,7 @@ import java.util.List;
 public class LogisticsManagerTest {
     private LogisticsManager manager;
 
-    @BeforeEach
+    @BeforeEach // this means that every test has these values (pretty cool tbh, I was doing it manually in my project)
     void setUp() {
         manager = new LogisticsManager();
         // Base Setup: Name, Weight, Distance, City, Type
@@ -39,6 +39,7 @@ public class LogisticsManagerTest {
         // Base: (10*0.5) + (100*0.1) = 15.0
         // Strategy: 15.0 * 1.75 = 26.25
         // Fee: 26.25 + 5.0 = 31.25
+        // the fee from express ??
         assertEquals(31.25, manager.calculateSingleCost(s), 0.001);
     }
 
