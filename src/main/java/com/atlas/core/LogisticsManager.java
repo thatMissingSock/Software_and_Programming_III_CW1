@@ -2,10 +2,19 @@ package com.atlas.core;
 
 import java.util.List;
 import com.atlas.models.Shipment;
+import com.atlas.strategies.StrategySwitch;
 
 // Some boilerplate code needs to be generated.
 
 public class LogisticsManager {
+
+    public double calculateSingle(Shipment s) { // we need to create a new object testing for null and other things
+        if (s == null) throw new NullPointerException("Shipment cannot be null, does not make sense"); // null test
+        return StrategySwitch.fromType(s.getType()).calculateCost(s); // use the calculateCost after returning the types
+    }
+
+
+
     private List<Shipment> masterShipmentList;
 
     /**
@@ -16,4 +25,5 @@ public class LogisticsManager {
         //TODO
         return 0.0;
     }
+
 }
