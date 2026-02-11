@@ -30,7 +30,6 @@ masterList of shipments and its 'abilities'
         return StrategySwitch.fromType(s.getType()).calculateCost(s); // use the calculateCost after returning the types
     }
 
-    // TODO: CHANGE BELOW as it is temporary code so I can run the test units
     public List<String> getUniqueDestinationsSorted() { // theoretically it should run empty?
         return masterList.stream() //starting the stream
                 .map(Shipment::getDestination) // we only need the city local
@@ -39,8 +38,11 @@ masterList of shipments and its 'abilities'
                 .toList(); // collect the results into a list
     }
 
-    public List<Shipment> getHighValueShipments(Number n) { // TODO:this needs to return a list of shipments above £500.00 via STREAMS
-        return null;
+    public List<Shipment> getHighValueShipments(double n) { // I did originally mapToDouble but this seemed easier, if
+        // you filter and use the 'Shipment' method of calculating a cost. You can then just add to a list
+        return masterList.stream() // start the stream
+                .filter(s->calculateSingleCost(s)>n)
+                .toList();
     }
 
     public double calculateAverageShippingCost() { // TODO:this needs to return the average shipping cost (N.B. UNSURE OF IF IT IS STREAMS/LAMBDA)
