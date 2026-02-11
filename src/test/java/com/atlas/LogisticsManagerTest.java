@@ -61,7 +61,7 @@ public class LogisticsManagerTest {
     }
 
     @Test
-    @Order(5)
+    @Order(5) // PASSED
     void testStreamUniqueCitiesSorting() {
         List<String> cities = manager.getUniqueDestinationsSorted();
         assertEquals(2, cities.size());

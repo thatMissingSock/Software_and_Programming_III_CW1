@@ -32,8 +32,11 @@ masterList of shipments and its 'abilities'
 
     // TODO: CHANGE BELOW as it is temporary code so I can run the test units
     public List<String> getUniqueDestinationsSorted() { // theoretically it should run empty?
-        ArrayList<String> MyList = new ArrayList<String>();
-        return MyList;
+        return masterList.stream() //starting the stream
+                .map(Shipment::getDestination) // we only need the city local
+                .distinct()
+                .sorted() // should do it in ASC
+                .toList(); // collect the results into a list
     }
 
     public List<Shipment> getHighValueShipments(Number n) { // TODO:this needs to return a list of shipments above £500.00 via STREAMS
