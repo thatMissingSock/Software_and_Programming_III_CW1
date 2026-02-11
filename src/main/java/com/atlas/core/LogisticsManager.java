@@ -20,7 +20,7 @@ masterList of shipments and its 'abilities'
         masterList.add(shipment);
     }
 
-    public List<Shipment> getMasterList() { // creating a method to call the masterList
+    public List<Shipment> getMasterShipmentList() { // creating a method to call the masterList
         return masterList;
     }
 
@@ -30,6 +30,23 @@ masterList of shipments and its 'abilities'
         return StrategySwitch.fromType(s.getType()).calculateCost(s); // use the calculateCost after returning the types
     }
 
+    // TODO: CHANGE BELOW as it is temporary code so I can run the test units
+    public List<String> getUniqueDestinationsSorted() { // theoretically it should run empty?
+        ArrayList<String> MyList = new ArrayList<String>();
+        return MyList;
+    }
+
+    public List<Shipment> getHighValueShipments(Number n) { // TODO:this needs to return a list of shipments above £500.00 via STREAMS
+        return null;
+    }
+
+    public double calculateAverageShippingCost() { // TODO:this needs to return the average shipping cost (N.B. UNSURE OF IF IT IS STREAMS/LAMBDA)
+        return 0.0;
+    }
+
+    public void processShipment (Shipment s) { // TODO:this needs to process shipments in a multitude of ways, LEAVE TILL LAST??
+        return;
+    }
 
     /**
      * MLO8: Use of Streams to filter and aggregate data.

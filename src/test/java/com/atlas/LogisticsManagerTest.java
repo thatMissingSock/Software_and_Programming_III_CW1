@@ -74,7 +74,7 @@ public class LogisticsManagerTest {
     void testStreamHighValueShipments() {
         // Adding a very heavy/distant shipment to cross the £500 threshold
         manager.addShipment(new Shipment("HeavyGold", 1000.0, 5000.0, "Dubai", "Standard"));
-        List<Shipment> highValue = manager.getHighValueShipments(500.0);
+        List<Shipment> highValue = manager.getHighValueShipments(500.0); // this is the method that collects to lists?
         assertEquals(1, highValue.size());
         assertEquals("HeavyGold", highValue.get(0).getName());
     }
@@ -83,7 +83,7 @@ public class LogisticsManagerTest {
     @Order(7)
     void testStreamAverageCost() {
         // Average of setup items (~30.0, ~14.37, ~21.4)
-        double avg = manager.calculateAverageShippingCost();
+        double avg = manager.calculateAverageShippingCost(); // method to calculate average shipping cost
         assertTrue(avg > 0);
     }
 
@@ -93,7 +93,7 @@ public class LogisticsManagerTest {
     @Order(10)
     void testInvalidWeightRejection() {
         Shipment bad = new Shipment("Void", -5.0, 100.0, "London", "Standard");
-        assertThrows(IllegalArgumentException.class, () -> manager.processShipment(bad));
+        assertThrows(IllegalArgumentException.class, () -> manager.processShipment(bad)); // MAJOR METHOD to process shipments
     }
 
     @Test
