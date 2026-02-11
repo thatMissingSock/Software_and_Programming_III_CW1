@@ -45,8 +45,11 @@ masterList of shipments and its 'abilities'
                 .toList();
     }
 
-    public double calculateAverageShippingCost() { // TODO:this needs to return the average shipping cost (N.B. UNSURE OF IF IT IS STREAMS/LAMBDA)
-        return 0.0;
+    public double calculateAverageShippingCost() {
+        return masterList.stream()
+                .mapToDouble(this::calculateSingleCost) // for every "instance" (shipment) we call upon the method
+                .average() // calcs the average
+                .orElse(0.0); // else returns the 0.0 incase the list is empty
     }
 
     public void processShipment (Shipment s) { // TODO:this needs to process shipments in a multitude of ways, LEAVE TILL LAST??
