@@ -15,7 +15,7 @@ public class LogisticsManagerTest {
 
     @BeforeEach // this means that every test has these values (pretty cool tbh, I was doing it manually in my project)
     void setUp() {
-        manager = new LogisticsManager();
+        manager = new LogisticsManager(); // it seems manager creates a whole new LogisticsManager everytime it is called upon
         // Base Setup: Name, Weight, Distance, City, Type
         manager.addShipment(new Shipment("Alpha", 10.0, 100.0, "London", "Standard"));
         manager.addShipment(new Shipment("Beta", 5.0, 50.0, "Manchester", "Express"));

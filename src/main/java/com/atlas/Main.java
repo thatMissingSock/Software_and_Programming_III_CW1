@@ -19,8 +19,8 @@ public class Main {
 
         // Dashboard Output
         System.out.println("\n--- ATLAS LOGISTICS DASHBOARD ---");
-        System.out.printf("Total Shipments: %d%n", manager.getMasterShipmentList().size());
-        System.out.printf("Unique Cities:   %s%n", manager.getUniqueDestinationsSorted());
+        System.out.printf("Total Shipments: %d%n", manager.getMasterShipmentList().size()); // TODO: create a .getMasterShipmentList() for manager object
+        System.out.printf("Unique Cities:   %s%n", manager.getUniqueDestinationsSorted()); // TODO: .create a .getUniqueDestinationsSorted() for manager object
 
         System.out.println("\n--- DETAILED BILLING ---");
         manager.getMasterShipmentList().forEach(s -> {
