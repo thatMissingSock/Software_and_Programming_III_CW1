@@ -8,5 +8,5 @@ public class Shipment {
     double weight;
     double distance;
     String destination;
-    String type;
+    String type; // TYPE IS A STRING
 }

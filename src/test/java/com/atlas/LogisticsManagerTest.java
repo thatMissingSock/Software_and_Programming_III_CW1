@@ -25,7 +25,7 @@ public class LogisticsManagerTest {
     // --- CATEGORY 1: STRATEGY PATTERN MATH (MLO5) ---
 
     @Test
-    @Order(1)
+    @Order(1) // PASSED
     void testStandardCostCalculation() {
         Shipment s = new Shipment("Test", 20.0, 200.0, "Leeds", "Standard");
         // (20*0.5) + (200*0.1) = 30.0
@@ -33,7 +33,7 @@ public class LogisticsManagerTest {
     }
 
     @Test
-    @Order(2)
+    @Order(2) // PASSED
     void testExpressCostWithProcessingFee() {
         Shipment s = new Shipment("Test", 10.0, 100.0, "Leeds", "Express");
         // Base: (10*0.5) + (100*0.1) = 15.0
@@ -44,7 +44,7 @@ public class LogisticsManagerTest {
     }
 
     @Test
-    @Order(3)
+    @Order(3) // PASSED
     void testFragileCostUnderWeightLimit() {
         Shipment s = new Shipment("Test", 10.0, 100.0, "Leeds", "Fragile");
         // Base: 15.0. Strategy: (15.0 * 1.2) + 20.0 = 38.0
@@ -54,7 +54,7 @@ public class LogisticsManagerTest {
     // --- CATEGORY 2: JAVA STREAMS & ANALYTICS (MLO8) ---
 
     @Test
-    @Order(4)
+    @Order(4) // PASSED
     void testStreamTotalWeightFiltering() {
         // From setup: Alpha(10) + Gamma(2) = 12
         assertEquals(12.0, manager.getTotalWeightForDestination("London"), 0.001);

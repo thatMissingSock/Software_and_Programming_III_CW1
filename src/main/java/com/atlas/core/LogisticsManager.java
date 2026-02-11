@@ -52,9 +52,15 @@ masterList of shipments and its 'abilities'
      * MLO8: Use of Streams to filter and aggregate data.
      * Find the total weight of all shipments for a specific destination.
      */
+    // return the sum weight for a specific destination but must be: case insensitive, return 0.0 if no matches USING STREAMS
     public double getTotalWeightForDestination(String city) {
-        //TODO
-        return 0.0;
+
+        if (city == null) return 0.0;
+        else return masterList.stream()
+                .filter(s->s != null && s.getDestination() != null) // despite the if statement, it's a double check
+                .filter(s->s.getDestination().equalsIgnoreCase(city)) // ignores UPPERcases
+                .mapToDouble(Shipment::getWeight) // we only need the weight of the shipment
+                .sum();
     }
 
 }
