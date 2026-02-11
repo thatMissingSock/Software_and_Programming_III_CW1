@@ -70,7 +70,7 @@ public class LogisticsManagerTest {
     }
 
     @Test
-    @Order(6)
+    @Order(6) // PASSED
     void testStreamHighValueShipments() {
         // Adding a very heavy/distant shipment to cross the £500 threshold
         manager.addShipment(new Shipment("HeavyGold", 1000.0, 5000.0, "Dubai", "Standard"));
@@ -80,7 +80,7 @@ public class LogisticsManagerTest {
     }
 
     @Test
-    @Order(7)
+    @Order(7) // PASSED
     void testStreamAverageCost() {
         // Average of setup items (~30.0, ~14.37, ~21.4)
         double avg = manager.calculateAverageShippingCost(); // method to calculate average shipping cost
@@ -90,14 +90,14 @@ public class LogisticsManagerTest {
     // --- CATEGORY 4: VALIDATION & AMBIGUITY (MLO4) ---
 
     @Test
-    @Order(10)
+    @Order(10) // PASSED
     void testInvalidWeightRejection() {
         Shipment bad = new Shipment("Void", -5.0, 100.0, "London", "Standard");
         assertThrows(IllegalArgumentException.class, () -> manager.processShipment(bad)); // MAJOR METHOD to process shipments
     }
 
     @Test
-    @Order(11)
+    @Order(11) // PASSED
     void testFragileWeightConstraint() {
         // Ambiguity Rule: Fragile must be under 50kg
         Shipment heavyFragile = new Shipment("Piano", 60.0, 10.0, "London", "Fragile");
@@ -105,7 +105,7 @@ public class LogisticsManagerTest {
     }
 
     @Test
-    @Order(12)
+    @Order(12) // PASSED
     void testEmptyDestinationRejection() {
         Shipment nowhere = new Shipment("Ghost", 1.0, 1.0, "", "Standard");
         assertThrows(IllegalArgumentException.class, () -> manager.processShipment(nowhere));
@@ -125,7 +125,7 @@ public class LogisticsManagerTest {
     // --- CATEGORY 5: ROBUSTNESS & EDGE CASES (MLO10) ---
 
     @Test
-    @Order(13)
+    @Order(13) // PASSED
     void testEmptyListStreamHandling() {
         LogisticsManager emptyManager = new LogisticsManager();
         assertEquals(0.0, emptyManager.getTotalWeightForDestination("London"));
@@ -133,20 +133,20 @@ public class LogisticsManagerTest {
     }
 
     @Test
-    @Order(14)
+    @Order(14) // PASSED
     void testCaseInsensitiveCitySearch() {
         // Should handle "london" vs "London" if implemented correctly
         assertEquals(12.0, manager.getTotalWeightForDestination("london"), 0.001);
     }
 
     @Test
-    @Order(15)
+    @Order(15) // PASSED
     void testStrategyFactoryNullHandling() {
         assertThrows(NullPointerException.class, () -> manager.calculateSingleCost(null));
     }
 
     @Test
-    @Order(16)
+    @Order(16) // PASSED
     void testUnknownStrategyDefaulting() {
         Shipment weird = new Shipment("Alien", 1.0, 1.0, "Mars", "Teleport");
         // Should default to Standard or throw error based on student design
@@ -154,14 +154,14 @@ public class LogisticsManagerTest {
     }
 
     @Test
-    @Order(17)
+    @Order(17) // PASSED
     void testLargeVolumeShipmentCount() {
         for (int i = 0; i < 100; i++) manager.addShipment(new Shipment("S", 1, 1, "C", "Standard"));
         assertEquals(103, manager.getMasterShipmentList().size());
     }
 
     @Test
-    @Order(18)
+    @Order(18) // PASSED
     void testDefaultMethodFeeApplication() {
         // Verifies the 5.00 fee is added to Express but NOT Standard
         Shipment s1 = new Shipment("A", 10, 100, "C", "Standard");
@@ -170,7 +170,7 @@ public class LogisticsManagerTest {
         assertEquals(5.00, diff, 0.001);
     }
 
-    @Test
+    @Test // PASSED (??)
     @DisplayName("MLO5: Standard Shipping Strategy Calculation")
     void testStandardShippingLogic() {
         Shipment s = new Shipment("Box", 20.0, 200.0, "Bristol", "Standard");
@@ -179,7 +179,7 @@ public class LogisticsManagerTest {
         assertEquals(expected, manager.calculateSingleCost(s), 0.01);
     }
 
-    @Test
+    @Test // PASSED
     @DisplayName("MLO5/MLO8: Express Shipping Strategy with Default Fee")
     void testExpressShippingLogic() {
         Shipment s = new Shipment("Documents", 2.0, 100.0, "Leeds", "Express");
@@ -190,7 +190,7 @@ public class LogisticsManagerTest {
         assertEquals(expected, manager.calculateSingleCost(s), 0.01);
     }
 
-    @Test
+    @Test // PASSED
     @DisplayName("MLO8: Stream Filtering for Specific Destination")
     void testTotalWeightForDestination() {
         // From setUp: Item A (10kg) and Item C (2kg) are for London.
@@ -198,7 +198,7 @@ public class LogisticsManagerTest {
         assertEquals(expected, manager.getTotalWeightForDestination("London"), 0.01);
     }
 
-    @Test
+    @Test // PASSED
     @DisplayName("MLO8: Stream Mapping for Unique Cities")
     void testUniqueCitiesSorted() {
         List<String> cities = manager.getUniqueDestinationsSorted();

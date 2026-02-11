@@ -53,7 +53,36 @@ masterList of shipments and its 'abilities'
     }
 
     public void processShipment (Shipment s) { // TODO:this needs to process shipments in a multitude of ways, LEAVE TILL LAST??
-        return;
+        /*
+        The main 'point' of this method is to ensure this whole 'program' does not burn and crash so this needs to be
+        split into parts:
+        1. throw an error in case the string is null
+        2. ensuring that the weight is between 0-1000KG
+        3. use LAMBDAs to check the destination and ensure IT is not empty/null
+        4. ensure that if the String type == FRAGILE (case dont matter) then it must be 50KG else throw an illegalArg error
+        5. IF it passes all of these then we add it to the queue, question is do I do it as a switch, if else or just seperate statements?
+         */
+
+        // 1.
+        if (s == null) throw new IllegalArgumentException("Shipment cannot be null, please check details.");
+
+        // 2.
+        double weight =s.getWeight();
+        if (weight < 0.0 || weight > 1000.0) { // check for weights on both sides of the spectrum
+            throw  new IllegalArgumentException("Weight is invalid, it must be between 0-1000KG. Please double check details.");
+        }
+
+        // 3.
+        String destination = s.getDestination();
+        if (destination == null || destination.trim().isEmpty()) {
+            throw new IllegalArgumentException("Destination cannot be null or empty. Please check your details.");
+        }
+
+        // 4.
+        String type = s.getType(); // asigns the same type before hand
+        if (type != null && type.equalsIgnoreCase("Fragile") && weight > 50.0) { // checks to make sure the type is not null (if it was checking for null then it would not be effective), is fragile and above 50KG
+            throw new IllegalArgumentException("Fragile shipments must be under 50KG.");
+        }
     }
 
     /**
