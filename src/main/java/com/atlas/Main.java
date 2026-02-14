@@ -19,13 +19,13 @@ public class Main {
 
         // Dashboard Output
         System.out.println("\n--- ATLAS LOGISTICS DASHBOARD ---");
-        System.out.printf("Total Shipments: %d%n", manager.getMasterShipmentList().size()); // TODO: create a .getMasterShipmentList() for manager object
-        System.out.printf("Unique Cities:   %s%n", manager.getUniqueDestinationsSorted()); // TODO: .create a .getUniqueDestinationsSorted() for manager object
+        System.out.printf("Total Shipments: %d%n", manager.getMasterShipmentList().size()); // SUCCESS!!!!
+        System.out.printf("Unique Cities:   %s%n", manager.getUniqueDestinationsSorted()); // IT WORKS IN ASC!!
 
         System.out.println("\n--- DETAILED BILLING ---");
         manager.getMasterShipmentList().forEach(s -> {
             double cost = manager.calculateSingleCost(s);
-            System.out.printf("[%s] -> %-10s | Cost: £%7.2f%n", s.getType(), s.getName(), cost);
+            System.out.printf("[%s] -> %-10s | Cost: £%7.2f%n", s.getType(), s.getName(), cost); //pre-gen
         });
 
         log.info("Analysis complete. All billing calculated via Strategy delegates.");
