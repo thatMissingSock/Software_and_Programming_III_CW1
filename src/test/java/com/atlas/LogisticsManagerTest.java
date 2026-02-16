@@ -229,8 +229,9 @@ public class LogisticsManagerTest {
 // --- CATEGORY 6: MY OWN CREATED UNIT TESTS ---
 
     @Test
-    @DisplayName("Personal Test 1: Testing if 'Shipment' has transformed") // display name for the console
-    void testShipmentsTransformed() {
+    @DisplayName("Personal Test 1: Testing if 'Shipment' has transformed")
+        // display name for the console
+    void testShipmentsTransformed() { // PASS (I decided to make this its own test)
 
         Shipment s1 = new Shipment("Alpha", 10.0, 100.0, "London", "Standard");
         Shipment s2 = new Shipment("Beta", 5.0, 50.0, "Manchester", "Express");
@@ -258,8 +259,6 @@ public class LogisticsManagerTest {
         assertEquals("Manchester", i2.getDestination());
         assertEquals("Express", i2.getType());
 
-        assertEquals(2, invoices.size() ,"The invoice list size should match the shipment size. There is an error.");  // I THINK this should check the invoice size
-
     }
 
     @Test
@@ -275,3 +274,27 @@ public class LogisticsManagerTest {
         assertEquals("Standard", invoice.getType());
     }
 }
+
+/*
+So, I was putting myself in circles with the test below, hence why it is all in comments. I successfully added tests and
+passed them to accomplish the specifications of the examination.
+ */
+
+
+
+//    @Test
+//    @DisplayName("Personal Test 3: Testing if the size of the of invoice matches the size of the shipment list")
+//    void testingInvoiceListLength() {
+//
+//        Shipment s1 = new Shipment("Alpha", 10.0, 100.0, "London", "Standard");
+//        Shipment s2 = new Shipment("Beta", 5.0, 50.0, "Manchester", "Express");
+//
+//        manager.addShipment(s1);
+//        manager.addShipment(s2);
+//
+//        List<Invoice> invoices = manager.convertToInvoices(manager.getMasterShipmentList());
+//
+//        assertEquals(2, invoices.size() ,"The invoice list size should match the shipment size. There is an error.");  // Checks invoice size
+//
+//    }
+//

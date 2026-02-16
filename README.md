@@ -42,20 +42,9 @@ In this assignment, you will complete the implementation of `Atlas`, a centralis
 + "MLO10: Demonstrate proficiency in construction and unit testing (JUnit 5)."
   + The generated unit testing did not run unhindered. They required a call to the "manager" object (which was just a creation of the LogisticsManager class). 
   + Additionally, I could not run test #1 or test #2 without fixing or creating an object for test #14 despite me not even working on it. This meant creating a whole new object or even class, making it return 0.0 or making the object VOID so the unit test would 'shut up'. I believe this makes me proficient as I understand that JAVA ALWAYS needs to compile first hence why it was not letting me run a single test when there was a missing object below.
-
-## Things left to do (I think to get a perfect score)
-  + I HAVE YET TO CREATE A UNIT TEST to show UTTER proficiency in unit testing
-    + I HAVE FOUND IT! I need to: 
-      + create a unit test that tests if the product creates invoices from the list from `Shipment` and show it has transformed it
-      + create another unit that tests if the invoice has the following:
-        + name
-        + weight
-        + distance
-        + destination
-        + type
-
-N.B. Upon creating these unit tests, I need to create the accompanying code in the write folders (and possibly create the folders) to satisfy the tests.  
-
+  + I have created TWO unit tests to satisfy creating `Invoice` Model as well as a new `Invoice` Object and it's accompanying methods
+  + I have demonstrated usaged of assertEqual, assertNull and assertNotNull
+  + I have also shown (by regressing my own code) the utility of unit testing
 
 
 
