@@ -42,7 +42,10 @@ In this assignment, you will complete the implementation of `Atlas`, a centralis
 + "MLO10: Demonstrate proficiency in construction and unit testing (JUnit 5)."
   + The generated unit testing did not run unhindered. They required a call to the "manager" object (which was just a creation of the LogisticsManager class). 
   + Additionally, I could not run test #1 or test #2 without fixing or creating an object for test #14 despite me not even working on it. This meant creating a whole new object or even class, making it return 0.0 or making the object VOID so the unit test would 'shut up'. I believe this makes me proficient as I understand that JAVA ALWAYS needs to compile first hence why it was not letting me run a single test when there was a missing object below.
-  + I HAVE YET TO CREATE A UNIT TEST
+
+## Things left to do (I think to get a perfect score)
+  + I HAVE YET TO CREATE A UNIT TEST to show UTTER proficiency in unit testing
+    + THIS IS NOT BECAUSE I DO NOT KNOW HOW TO USE UNIT TESTING, but rather cannot find anything extra to be added.
 
 
 
