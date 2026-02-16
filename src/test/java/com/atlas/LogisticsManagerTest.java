@@ -228,7 +228,7 @@ public class LogisticsManagerTest {
 // --- CATEGORY 6: MY OWN CREATED UNIT TESTS ---
 
     @Test
-    @DisplayName("Created Test 1: Testing if 'Shipment' has transformed") // display name for the console
+    @DisplayName("Personal Test 1: Testing if 'Shipment' has transformed") // display name for the console
     void testShipmentsTransformed() {
 
         Shipment s1 = new Shipment("Alpha", 10.0, 100.0, "London", "Standard");
@@ -259,5 +259,18 @@ public class LogisticsManagerTest {
 
         assertEquals(2, invoices.size() ,"The invoice list size should match the shipment size. There is an error.");  // I THINK this should check the invoice size
 
+    }
+
+    @Test
+    @DisplayName("Personal Test 2: Testing if the invoice has all the required fields")
+    void testingInvoiceFields() {
+        Invoice invoice = new Invoice("Alpha", 10.0, 100.0, "London", "Standard");
+
+        // I should've put this one above PT#1, but it's more or less the same. It just checks the TYPE and assertsEQUAL.
+        assertEquals("Alpha", invoice.getName());
+        assertEquals(10.0, invoice.getWeight());
+        assertEquals(100.0, invoice.getDistance());
+        assertEquals("London", invoice.getDestination());
+        assertEquals("Standard", invoice.getType());
     }
 }
