@@ -13,7 +13,8 @@ import java.util.List;
 public class LogisticsManagerTest {
     private LogisticsManager manager;
 
-    @BeforeEach // this means that every test has these values (pretty cool tbh, I was doing it manually in my project)
+    @BeforeEach
+        // this means that every test has these values (pretty cool tbh, I was doing it manually in my project)
     void setUp() {
         manager = new LogisticsManager(); // it seems manager creates a whole new LogisticsManager everytime it is called upon
         // Base Setup: Name, Weight, Distance, City, Type
@@ -25,7 +26,8 @@ public class LogisticsManagerTest {
     // --- CATEGORY 1: STRATEGY PATTERN MATH (MLO5) ---
 
     @Test
-    @Order(1) // PASSED
+    @Order(1)
+        // PASSED
     void testStandardCostCalculation() {
         Shipment s = new Shipment("Test", 20.0, 200.0, "Leeds", "Standard");
         // (20*0.5) + (200*0.1) = 30.0
@@ -33,7 +35,8 @@ public class LogisticsManagerTest {
     }
 
     @Test
-    @Order(2) // PASSED
+    @Order(2)
+        // PASSED
     void testExpressCostWithProcessingFee() {
         Shipment s = new Shipment("Test", 10.0, 100.0, "Leeds", "Express");
         // Base: (10*0.5) + (100*0.1) = 15.0
@@ -44,7 +47,8 @@ public class LogisticsManagerTest {
     }
 
     @Test
-    @Order(3) // PASSED
+    @Order(3)
+        // PASSED
     void testFragileCostUnderWeightLimit() {
         Shipment s = new Shipment("Test", 10.0, 100.0, "Leeds", "Fragile");
         // Base: 15.0. Strategy: (15.0 * 1.2) + 20.0 = 38.0
@@ -54,14 +58,16 @@ public class LogisticsManagerTest {
     // --- CATEGORY 2: JAVA STREAMS & ANALYTICS (MLO8) ---
 
     @Test
-    @Order(4) // PASSED
+    @Order(4)
+        // PASSED
     void testStreamTotalWeightFiltering() {
         // From setup: Alpha(10) + Gamma(2) = 12
         assertEquals(12.0, manager.getTotalWeightForDestination("London"), 0.001);
     }
 
     @Test
-    @Order(5) // PASSED
+    @Order(5)
+        // PASSED
     void testStreamUniqueCitiesSorting() {
         List<String> cities = manager.getUniqueDestinationsSorted();
         assertEquals(2, cities.size());
@@ -70,7 +76,8 @@ public class LogisticsManagerTest {
     }
 
     @Test
-    @Order(6) // PASSED
+    @Order(6)
+        // PASSED
     void testStreamHighValueShipments() {
         // Adding a very heavy/distant shipment to cross the £500 threshold
         manager.addShipment(new Shipment("HeavyGold", 1000.0, 5000.0, "Dubai", "Standard"));
@@ -80,7 +87,8 @@ public class LogisticsManagerTest {
     }
 
     @Test
-    @Order(7) // PASSED
+    @Order(7)
+        // PASSED
     void testStreamAverageCost() {
         // Average of setup items (~30.0, ~14.37, ~21.4)
         double avg = manager.calculateAverageShippingCost(); // method to calculate average shipping cost
@@ -90,14 +98,16 @@ public class LogisticsManagerTest {
     // --- CATEGORY 4: VALIDATION & AMBIGUITY (MLO4) ---
 
     @Test
-    @Order(10) // PASSED
+    @Order(10)
+        // PASSED
     void testInvalidWeightRejection() {
         Shipment bad = new Shipment("Void", -5.0, 100.0, "London", "Standard");
         assertThrows(IllegalArgumentException.class, () -> manager.processShipment(bad)); // MAJOR METHOD to process shipments
     }
 
     @Test
-    @Order(11) // PASSED
+    @Order(11)
+        // PASSED
     void testFragileWeightConstraint() {
         // Ambiguity Rule: Fragile must be under 50kg
         Shipment heavyFragile = new Shipment("Piano", 60.0, 10.0, "London", "Fragile");
@@ -105,7 +115,8 @@ public class LogisticsManagerTest {
     }
 
     @Test
-    @Order(12) // PASSED
+    @Order(12)
+        // PASSED
     void testEmptyDestinationRejection() {
         Shipment nowhere = new Shipment("Ghost", 1.0, 1.0, "", "Standard");
         assertThrows(IllegalArgumentException.class, () -> manager.processShipment(nowhere));
@@ -125,7 +136,8 @@ public class LogisticsManagerTest {
     // --- CATEGORY 5: ROBUSTNESS & EDGE CASES (MLO10) ---
 
     @Test
-    @Order(13) // PASSED
+    @Order(13)
+        // PASSED
     void testEmptyListStreamHandling() {
         LogisticsManager emptyManager = new LogisticsManager();
         assertEquals(0.0, emptyManager.getTotalWeightForDestination("London"));
@@ -133,20 +145,23 @@ public class LogisticsManagerTest {
     }
 
     @Test
-    @Order(14) // PASSED
+    @Order(14)
+        // PASSED
     void testCaseInsensitiveCitySearch() {
         // Should handle "london" vs "London" if implemented correctly
         assertEquals(12.0, manager.getTotalWeightForDestination("london"), 0.001);
     }
 
     @Test
-    @Order(15) // PASSED
+    @Order(15)
+        // PASSED
     void testStrategyFactoryNullHandling() {
         assertThrows(NullPointerException.class, () -> manager.calculateSingleCost(null));
     }
 
     @Test
-    @Order(16) // PASSED
+    @Order(16)
+        // PASSED
     void testUnknownStrategyDefaulting() {
         Shipment weird = new Shipment("Alien", 1.0, 1.0, "Mars", "Teleport");
         // Should default to Standard or throw error based on student design
@@ -154,14 +169,16 @@ public class LogisticsManagerTest {
     }
 
     @Test
-    @Order(17) // PASSED
+    @Order(17)
+        // PASSED
     void testLargeVolumeShipmentCount() {
         for (int i = 0; i < 100; i++) manager.addShipment(new Shipment("S", 1, 1, "C", "Standard"));
         assertEquals(103, manager.getMasterShipmentList().size());
     }
 
     @Test
-    @Order(18) // PASSED
+    @Order(18)
+        // PASSED
     void testDefaultMethodFeeApplication() {
         // Verifies the 5.00 fee is added to Express but NOT Standard
         Shipment s1 = new Shipment("A", 10, 100, "C", "Standard");
@@ -205,5 +222,42 @@ public class LogisticsManagerTest {
         assertEquals(2, cities.size());
         assertEquals("London", cities.get(0));
         assertEquals("Manchester", cities.get(1));
+    }
+
+
+// --- CATEGORY 6: MY OWN CREATED UNIT TESTS ---
+
+    @Test
+    @DisplayName("Created Test 1: Testing if 'Shipment' has transformed") // display name for the console
+    void testShipmentsTransformed() {
+
+        Shipment s1 = new Shipment("Alpha", 10.0, 100.0, "London", "Standard");
+        Shipment s2 = new Shipment("Beta", 5.0, 50.0, "Manchester", "Express");
+
+        manager.addShipment(s1);
+        manager.addShipment(s2);
+
+        // below is 'how' the LogisticsManager will convert it to the invoice
+        List<Invoice> invoices = manager.convertToInvoices(manager.getMasterShipmentList()); //TODO:CREATE METHODS
+
+        assertNotNull(invoices, "Invoice list shouldn't be null OR there is an unkown error."); // checks for null BUT NOT ###EMPTY###
+
+        // now we split it and check if it matches
+        Invoice i1 = invoices.get(0); // actually 'get' the invoice
+        assertEquals("Alpha", i1.getName());
+        assertEquals(10.0, i1.getWeight());
+        assertEquals(100.0, i1.getDistance());
+        assertEquals("London", i1.getDestination());
+        assertEquals("Standard", i1.getType());
+
+        Invoice i2 = invoices.get(1);
+        assertEquals("Beta", i2.getName());
+        assertEquals(5.0, i2.getWeight());
+        assertEquals(50.0, i2.getDistance());
+        assertEquals("Manchester", i2.getDestination());
+        assertEquals("Express", i2.getType());
+
+        assertEquals(2, invoices.size() ,"The invoice list size should match the shipment size. There is an error.");  // I THINK this should check the invoice size
+
     }
 }
