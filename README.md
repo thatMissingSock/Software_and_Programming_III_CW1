@@ -45,7 +45,16 @@ In this assignment, you will complete the implementation of `Atlas`, a centralis
 
 ## Things left to do (I think to get a perfect score)
   + I HAVE YET TO CREATE A UNIT TEST to show UTTER proficiency in unit testing
-    + THIS IS NOT BECAUSE I DO NOT KNOW HOW TO USE UNIT TESTING, but rather cannot find anything extra to be added.
+    + I HAVE FOUND IT! I need to: 
+      + create a unit test that tests if the product creates invoices from the list from `Shipment` and show it has transformed it
+      + create another unit that tests if the invoice has the following:
+        + name
+        + weight
+        + distance
+        + destination
+        + type
+
+N.B. Upon creating these unit tests, I need to create the accompanying code in the write folders (and possibly create the folders) to satisfy the tests.  
 
 
 
