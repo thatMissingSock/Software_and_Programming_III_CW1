@@ -1,6 +1,7 @@
 package com.atlas;
 
 import com.atlas.core.*;
+import com.atlas.models.Invoice;
 import com.atlas.models.Shipment;
 import com.atlas.strategies.*;
 import org.junit.jupiter.api.*;
@@ -263,7 +264,7 @@ public class LogisticsManagerTest {
 
     @Test
     @DisplayName("Personal Test 2: Testing if the invoice has all the required fields")
-    void testingInvoiceFields() {
+    void testingInvoiceFields() { // PASSED
         Invoice invoice = new Invoice("Alpha", 10.0, 100.0, "London", "Standard");
 
         // I should've put this one above PT#1, but it's more or less the same. It just checks the TYPE and assertsEQUAL.

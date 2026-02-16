@@ -2,6 +2,8 @@ package com.atlas.core;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.atlas.models.Invoice;
 import com.atlas.models.Shipment;
 import com.atlas.strategies.StrategySwitchFactory;
 
@@ -99,6 +101,18 @@ masterList of shipments and its 'abilities'
                 .filter(s->s.getDestination().equalsIgnoreCase(city)) // ignores UPPERcases
                 .mapToDouble(Shipment::getWeight) // we only need the weight of the shipment
                 .sum();
+    }
+
+    public List<Invoice> convertToInvoices(List<Shipment> shipments) {
+        return shipments.stream()
+                .map(s -> new Invoice(
+                        s.getName(),
+                        s.getWeight(),
+                        s.getDistance(),
+                        s.getDestination(),
+                        s.getType()
+                ))
+                .toList();
     }
 
 }
